@@ -1,6 +1,6 @@
 ---
 title: Hüttwilen Gemeindescan 1
-author: oleg
+author: Mark Imhof
 updated: 27.07.2019
 categories:
  - trees
@@ -14,8 +14,7 @@ object:
    perim: 31393 m
    lod_url: https://ld.geo.admin.ch/boundaries/municipality/4821
    map_url: https://map.geo.admin.ch/?ch.swisstopo.swissboundaries3d-gemeinde-flaeche.fill=4821&time=None&lang=en&topic=ech
-preview:
-   image: preview/RestingDensity-100x100.png
+preview: ./preview/RestingDensity-100x100.png
 ---
 
 This is a sample Gemeindescan. It contains project data which in the future will be managed in a content database similar to SmartUse. The files stored in this folder will be updated through DataFlows. The data may include:

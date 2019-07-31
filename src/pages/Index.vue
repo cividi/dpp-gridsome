@@ -1,14 +1,13 @@
 <template>
   <Layout>
-    
-    <!-- Learn how to use images here: https://gridsome.org/docs/images -->
-    <g-image alt="Example image" src="~/favicon.png" width="135" />
-    
-    <h1>Hello, world!</h1>
-   
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur excepturi labore tempore expedita, et iste tenetur suscipit explicabo! Dolores, aperiam non officia eos quod asperiores
-    </p>
+
+    <g-image alt="Logo" src="~/logo.png" width="135" />
+
+    <h1>All your Gemeindescans are belong to us.</h1>
+
+    <div class="scans">
+      <ScanCard v-for="edge in $page.scans.edges" :key="edge.node.id" :scan="edge.node"/>
+    </div>
 
     <p class="home-links">
       <a href="https://gridsome.org/docs" target="_blank" rel="noopener">Gridsome Docs</a>
@@ -18,10 +17,34 @@
   </Layout>
 </template>
 
+<page-query>
+{
+  scans: allScan {
+    edges {
+      node {
+        id
+        title
+        path
+        preview
+        ...on Scan {
+            id
+            title
+            path
+        }
+      }
+    }
+  }
+}
+</page-query>
 <script>
+import ScanCard from '~/components/ScanCard.vue'
+
 export default {
+  components: {
+    ScanCard
+  },
   metaInfo: {
-    title: 'Hello, world!'
+    title: 'Gemeindescan Lite'
   }
 }
 </script>
