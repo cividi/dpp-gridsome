@@ -5,7 +5,8 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gemeindescan Lite',
+  siteName: 'Gemeindescan',
+  siteDescription: 'The SmartUse Gemeindescan Frontend.',
   plugins: [
     {
       use: '@gridsome/source-filesystem',

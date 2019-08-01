@@ -1,9 +1,9 @@
 <template>
   <Layout>
 
-    <g-image alt="Logo" src="~/logo.png" width="135" />
+    <g-image alt="Logo" src="~/assets/logo/logo.png" width="135" />
 
-    <h1>All your Gemeindescans are belong to us.</h1>
+    <h1>Gemeindescan</h1>
 
     <div class="scans">
       <ScanCard v-for="edge in $page.scans.edges" :key="edge.node.id" :scan="edge.node"/>
@@ -44,7 +44,7 @@ export default {
     ScanCard
   },
   metaInfo: {
-    title: 'Gemeindescan Lite'
+    title: 'Scancentral'
   }
 }
 </script>
