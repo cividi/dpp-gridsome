@@ -5,14 +5,14 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gemeindescan Lite',
+  siteName: 'Gemeindescan v0',
   plugins: [
     {
       use: '@gridsome/source-filesystem',
       options: {
         typeName: 'Scan',
-        path: 'scans/2019/4821/*.md',
-        route: '/scan/:bfsid',
+        path: 'scans/**/*.md',
+        route: '/scan/:slug',
       }
     }
   ]

@@ -2,6 +2,7 @@
   "name": "gemeindescan",
   "private": true,
   "scripts": {
+    "serve": "gridsome serve",
     "build": "gridsome build",
     "develop": "gridsome develop",
     "explore": "gridsome explore"
