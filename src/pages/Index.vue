@@ -1,20 +1,11 @@
-<template>
-  <Layout>
-
-    <g-image alt="Logo" src="~/logo.png" width="135" />
-
-    <h1>All your Gemeindescans are belong to us.</h1>
-
-    <div class="scans">
-      <ScanCard v-for="edge in $page.scans.edges" :key="edge.node.id" :scan="edge.node"/>
-    </div>
-
-    <p class="home-links">
-      <a href="https://gridsome.org/docs" target="_blank" rel="noopener">Gridsome Docs</a>
-      <a href="https://github.com/gridsome/gridsome" target="_blank" rel="noopener">GitHub</a>
-    </p>
-
-  </Layout>
+<template lang="pug">
+layout
+  .scans
+    ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node')
+  .home-links
+    a(href='https://cividi.ch', target='_blank', rel='noopener') Cividi
+    a(href='https://gridsome.org/docs', target='_blank', rel='noopener') Gridsome
+    a(href='https://github.com/cividi', target='_blank', rel='noopener') Sources
 </template>
 
 <page-query>
@@ -25,7 +16,7 @@
         id
         title
         path
-        preview
+        preview (width: 120, blur: 0)
         ...on Scan {
             id
             title
@@ -44,13 +35,18 @@ export default {
     ScanCard
   },
   metaInfo: {
-    title: 'Gemeindescan Lite'
+    name: 'home',
+    title: 'Gemeindescan'
   }
 }
 </script>
 
-<style>
-.home-links a {
-  margin-right: 1rem;
+<style lang="scss">
+.home-links {
+  margin-top: 5em;
+  text-align: center;
+  a {
+    margin-right: 1rem;
+  }
 }
 </style>

@@ -1,13 +1,9 @@
-<template>
-  <div class="scan-card content-box">
-    <div class="scan-card__header">
-      <g-image alt="Cover image" v-if="scan.preview.image" class="scan-card__image" :src="scan.preview.image" />
-    </div>
-    <div class="scan-card__content">
-      <h2 class="scan-card__title" v-html="scan.title" />
-      <g-link class="scan-card__link" :to="scan.path">Scan</g-link>
-    </div>
-  </div>
+<template lang="pug">
+v-card(max-width="400" class="mx-auto" :to='scan.path')
+  v-card-title(v-html='scan.title')
+  v-card-text
+    g-image.scan-card__image(v-if='scan.preview', :src='scan.preview')
+    v-btn(text) View
 </template>
 
 <script>
@@ -17,3 +13,10 @@ export default {
   props: ['scan'],
 }
 </script>
+
+<style lang="scss">
+  .v-card__text button {
+    margin-top: 4em;
+    float: right;
+  }
+</style>
