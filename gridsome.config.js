@@ -10,10 +10,17 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        typeName: 'Content',
+        typeName: 'Scan',
         path: 'content/**/project.md',
-        route: '/s/:slug',
+        route: '/p/:slug',
       }
     }
-  ]
+  ],
+  chainWebpack: config => {
+    config.module
+      .rule('pug')
+      .test(/\.pug$/)
+      .use('pug-plain-loader')
+      .loader('pug-plain-loader')
+  }
 }
