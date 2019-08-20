@@ -10,9 +10,9 @@ module.exports = {
     {
       use: '@gridsome/source-filesystem',
       options: {
-        typeName: 'Scan',
-        path: 'scans/**/*.md',
-        route: '/scan/:slug',
+        typeName: 'Content',
+        path: 'content/**/project.md',
+        route: '/s/:slug',
       }
     }
   ]

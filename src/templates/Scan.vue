@@ -1,44 +1,44 @@
 <template>
   <Layout>
     <div class="scan-header">
-      <g-image alt="Cover image" v-if="$page.scan.preview" :src="$page.scan.preview" />
+      <h1 class="scan-title">
+        {{ $page.scan.title }}
+      </h1>
     </div>
 
-    <h1 class="scan-title">
-      {{ $page.scan.title }}
-    </h1>
+    <div class="scan-rendering">
+      <div v-if="$page.scan.map_url" class="scan-map">
+        <iframe :src="$page.scan.map_url" frameborder="0"></iframe>
+      </div>
+      <g-image v-else-if="$page.scan.preview"
+        :src="$page.scan.preview" />
+      <div v-else>
+        <i>Rendering not available.</i>
+      </div>
+    </div>
 
     <div class="scan-meta">
-      <div class="scan-updated">
-        Updated: <em>{{ $page.scan.updated }}</em>
-      </div>
-      <div class="scan-object">
-        BFS-ID: <em>{{ $page.scan.object.bfsid }}</em>
-      </div>
-    </div>
-
-    <div class="scan content-box">
-      <div class="scan-map">
-        <iframe :src="$page.scan.object.map_url" frameborder="0"></iframe>
-      </div>
-
-      <div class="scan-content" v-html="$page.scan.content" />
-    </div>
-
-    <div class="scan-footer">
-      <div class="scan-author">
-        Author: <em>{{ $page.scan.author }}</em>
-      </div>
-      <h2>Quellen</h2>
-      <ul>
-        <li>BFS</li>
-        <li v-for="cat in $page.scan.categories">
-          {{ $cat }}
-        </li>
+      <ul class="scan-details">
+        <li><span>Author</span> <em>{{ $page.scan.author }}</em></li>
+        <li><span>Updated</span> <em>{{ $page.scan.updated }}</em></li>
       </ul>
+      <ul class="scan-object">
+        <li><span>Object</span> <em>{{ $page.scan.object.name }}</em></li>
+        <li><span>Type</span> <em>{{ $page.scan.object.type }}</em></li>
+        <li><span>Area</span> <em>{{ $page.scan.object.area }}</em></li>
+        <li><span>Perimeter</span> <em>{{ $page.scan.object.perimeter }}</em></li>
+        <li><span>Resolution</span> <em>{{ $page.scan.object.resolution }}</em></li>
+      </ul>
+      <div class="scan-categories">
+        <span>Categories</span>
+        <ul>
+          <li v-for="ctg in $page.scan.category">{{ ctg }}</li>
+        </ul>
+      </div>
     </div>
 
-    <Author class="post-author" />
+    <div class="scan-content" v-html="$page.scan.content" />
+
   </Layout>
 </template>
 
@@ -53,6 +53,9 @@ export default {
         {
           name: 'author',
           content: this.$page.scan.author
+        },{
+          name: 'updated',
+          content: this.$page.scan.updated
         }
       ]
     }
@@ -66,17 +69,16 @@ query Scan ($path: String!) {
     title
     author
     updated
-    categories
+    preview (width: 860, blur: 10)
+    category
     object {
-      bfsid
       name
       type
       area
-      perim
-      lod_url
-      map_url
+      perimeter
+      resolution
     }
-    preview
+    content
   }
 }
 </page-query>
