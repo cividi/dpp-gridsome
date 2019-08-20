@@ -1,14 +1,25 @@
-# Default starter for Gridsome
+# Gemeindescan v0
 
-This is the project you get when you run `gridsome create new-project`.
+`npm install --global yarn @gridsome/cli`
 
-### 1. Install Gridsome CLI tool if you don't have
+`gridsome develop` to start a local dev server at `http://localhost:8080`
 
-`npm install --global @gridsome/cli`
+Happy coding 🎉🙌
 
-### 2. Create a Gridsome project
 
-1. `gridsome create my-gridsome-site` to install default starter
-2. `cd my-gridsome-site` to open the folder
-3. `gridsome develop` to start a local dev server at `http://localhost:8080`
-4. Happy coding 🎉🙌
+
+---
+
+Docs:
+
+- https://gridsome.org/docs
+- https://vuetifyjs.com/en/components/
+- https://vuejs.org/v2/guide/
+- https://lobotuerto.com/blog/quickstart-guide-for-a-new-gridsome-project/
+- https://pughtml.com/
+
+Inspiration:
+
+- https://datahub.io/data-factory
+- https://kb.datopian.com
+- https://demos.creative-tim.com/vuetify-material-dashboard/
