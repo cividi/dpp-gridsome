@@ -41,8 +41,40 @@ layout
 </template>
 
 <script>
+import TreeNav from '~/components/TreeNav.vue'
+
+let tree = {
+  label: 'CH',
+    nodes: [
+      {
+        label: 'Aargau',
+        nodes: [
+          {
+            label: 'Hüttenwiler'
+          },
+          {
+            label: 'Grosswangen',
+            nodes: [
+              {
+                label: 'Study 1'
+              }
+            ]
+          }
+        ]
+      },
+      {
+        label: 'Zürich'
+      }
+    ]
+}
+
 export default {
   components: {
+    TreeNav
+  },
+  data () {
+    return {
+      tree
   },
   metaInfo () {
     return {

@@ -6,6 +6,7 @@ v-app
     v-toolbar-items
       v-btn(flat to="/") Home
       v-btn(flat to="/about") About
+  v-navigation-drawer(v-model="left" fixed)
   v-container
     slot
 </template>
