@@ -8,13 +8,7 @@
 module.exports = function (api) {
 
   api.chainWebpack((config, { isServer }) => {
-    if (isServer) {
-      config.externals([
-        nodeExternals({
-          whitelist: [/^vuetify/]
-        })
-      ])
-    }
+      // Server API: https://gridsome.org/docs/server-api/
   })
 
   api.loadSource(({ addContentType }) => {

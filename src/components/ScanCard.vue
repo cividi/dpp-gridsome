@@ -1,9 +1,10 @@
 <template lang="pug">
-v-card(max-width="400" class="mx-auto" :to='scan.path')
-  v-card-title(v-html='scan.title')
-  v-card-text
-    g-image.scan-card__image(v-if='scan.preview', :src='scan.preview')
-    v-btn(text) View
+v-card(max-width="400" class="mx-auto")
+  a(:href='scan.path')
+    v-card-title(v-html='scan.title')
+    v-card-text
+      g-image.scan-card__image(v-if='scan.preview', :src='scan.preview')
+      v-btn(text) View
 </template>
 
 <script>
