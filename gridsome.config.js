@@ -14,6 +14,13 @@ module.exports = {
         path: 'content/**/project.md',
         route: '/p/:slug',
       }
+    },{
+      use: '@gridsome/transformer-json',
+      options: {
+        typeName: 'Scan',
+        path: 'content/**/project.md',
+        route: '/p/:slug',
+      }
     }
   ],
   chainWebpack: config => {
