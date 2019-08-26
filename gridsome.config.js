@@ -15,11 +15,11 @@ module.exports = {
         route: '/p/:slug',
       }
     },{
-      use: '@gridsome/transformer-json',
+      use: '@gridsome/source-filesystem',
       options: {
-        typeName: 'Scan',
-        path: 'content/**/project.md',
-        route: '/p/:slug',
+        typeName: 'Package',
+        path: 'content/**/datapackage.json',
+        route: '/dp/:name',
       }
     }
   ],
