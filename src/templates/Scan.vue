@@ -4,17 +4,18 @@ layout
     i-layout-header.scan-header
       h1.scan-title
         | {{ $page.scan.title }}
-    i-layout(vertical='')
-      i-layout-aside
-        treenav
-      i-layout-content
-      .scan-rendering
-        .scan-map(v-if='$page.scan.map_url')
-          iframe(:src='$page.scan.map_url', frameborder='0')
-        g-image(v-else-if='$page.scan.preview', :src='$page.scan.preview')
-        div(v-else='')
-          i Rendering not available.
-      .scan-content(v-html='$page.scan.content')
+    i-layout(vertical)
+      i-layout-aside.scans
+        i-collapsible(:active='1')
+          ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node')
+      i-layout-content.scan-main
+        .scan-rendering
+          .scan-map(v-if='$page.scan.map_url')
+            iframe(:src='$page.scan.map_url', frameborder='0')
+          g-image(v-else-if='$page.scan.preview', :src='$page.scan.preview')
+          div(v-else='')
+            i Rendering not available.
+        .scan-content(v-html='$page.scan.content')
       i-layout-aside.scan-meta
         ul.scan-details
           li
@@ -46,8 +47,8 @@ layout
 </template>
 
 <script>
-import TreeNav from '~/components/TreeNav.vue'
 
+// https://vuejsexamples.com/a-treeview-component-for-vuejs/
 let tree = {
   label: 'CH',
     nodes: [
@@ -73,9 +74,11 @@ let tree = {
     ]
 }
 
+import ScanCard from '~/components/ScanCard.vue'
+
 export default {
   components: {
-    TreeNav
+    ScanCard
   },
   metaInfo () {
     return {
@@ -110,6 +113,21 @@ query Scan ($path: String!) {
       resolution
     }
     content
+  },
+  scans: allScan {
+    edges {
+      node {
+        id
+        title
+        path
+        preview (width: 120, blur: 0)
+        ...on Scan {
+            id
+            title
+            path
+        }
+      }
+    }
   }
 }
 </page-query>
@@ -117,5 +135,11 @@ query Scan ($path: String!) {
 <style lang="scss" scoped>
 iframe {
   width: 100%; height: 300px;
+}
+.scan-title {
+  text-align: center;
+}
+.scan-main, .scan-meta {
+  padding: 0 1em;
 }
 </style>

@@ -1,10 +1,7 @@
 <template lang="pug">
-v-card(max-width="400" class="mx-auto")
+i-collapsible-item(:title='scan.title', :id='1')
   a(:href='scan.path')
-    v-card-title(v-html='scan.title')
-    v-card-text
-      g-image.scan-card__image(v-if='scan.preview', :src='scan.preview')
-      v-btn(text) View
+    g-image.scan-card__image(v-if='scan.preview', :src='scan.preview')
 </template>
 
 <script>
@@ -16,8 +13,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .v-card__text button {
-    margin-top: 4em;
-    float: right;
-  }
+.collapsible .item .icon { display: none !important }
 </style>
