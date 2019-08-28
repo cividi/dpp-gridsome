@@ -1,5 +1,5 @@
 <template lang="pug">
-i-collapsible-item(:title='scan.title', :id='1')
+i-collapsible-item(:title='scan.title', :id='scan.id')
   a(:href='scan.path')
     g-image.scan-card__image(v-if='scan.preview', :src='scan.preview')
 </template>

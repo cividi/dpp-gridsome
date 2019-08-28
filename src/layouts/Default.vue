@@ -17,9 +17,3 @@ query {
   }
 }
 </static-query>
-
-<style lang="scss">
-.v-toolbar {
-  flex: none;
-}
-</style>

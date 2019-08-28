@@ -6,8 +6,10 @@ layout
         | {{ $page.scan.title }}
     i-layout(vertical)
       i-layout-aside.scans
-        i-collapsible(:active='1')
-          ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node')
+        i-collapsible
+          i-collapsible-item(v-for='canton in tree.nodes', :title='canton.label')
+            i-collapsible(v-if='canton.label == "Aargau"')
+              ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node')
       i-layout-content.scan-main
         .scan-rendering
           .scan-map(v-if='$page.scan.map_url')
@@ -68,9 +70,8 @@ let tree = {
           }
         ]
       },
-      {
-        label: 'Zürich'
-      }
+      { label: 'Bern' },
+      { label: 'Zürich' }
     ]
 }
 
@@ -79,6 +80,9 @@ import ScanCard from '~/components/ScanCard.vue'
 export default {
   components: {
     ScanCard
+  },
+  data () {
+    return { tree }
   },
   metaInfo () {
     return {
@@ -133,8 +137,11 @@ query Scan ($path: String!) {
 </page-query>
 
 <style lang="scss" scoped>
-iframe {
-  width: 100%; height: 300px;
+.scan-rendering {
+  img { width: 100%; }
+  iframe {
+    width: 100%; height: 300px;
+  }
 }
 .scan-title {
   text-align: center;
