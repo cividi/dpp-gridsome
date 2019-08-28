@@ -1,105 +1,6 @@
-<template lang="pug">
-layout
-  i-layout
-    i-layout-header.scan-header
-      h1.scan-title
-        | {{ $page.scan.title }}
-    i-layout(vertical)
-      i-layout-aside.scans
-        i-collapsible
-          i-collapsible-item(v-for='canton in tree.nodes', :title='canton.label')
-            i-collapsible(v-if='canton.label == "Aargau"')
-              ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node')
-      i-layout-content.scan-main
-        .scan-rendering
-          .scan-map(v-if='$page.scan.map_url')
-            iframe(:src='$page.scan.map_url', frameborder='0')
-          g-image(v-else-if='$page.scan.preview', :src='$page.scan.preview')
-          div(v-else='')
-            i Rendering not available.
-        .scan-content(v-html='$page.scan.content')
-      i-layout-aside.scan-meta
-        ul.scan-details
-          li
-            span Author
-            em {{ $page.scan.author }}
-          li
-            span Updated
-            em {{ $page.scan.updated }}
-        ul.scan-object
-          li
-            span Object
-            em {{ $page.scan.object.name }}
-          li
-            span Type
-            em {{ $page.scan.object.type }}
-          li
-            span Area
-            em {{ $page.scan.object.area }}
-          li
-            span Perimeter
-            em {{ $page.scan.object.perimeter }}
-          li
-            span Resolution
-            em {{ $page.scan.object.resolution }}
-        .scan-categories
-          span Categories
-          ul
-            li(v-for='ctg in $page.scan.category') {{ ctg }}
-</template>
+<template src="./Scan.pug" />
 
-<script>
-
-// https://vuejsexamples.com/a-treeview-component-for-vuejs/
-let tree = {
-  label: 'CH',
-    nodes: [
-      {
-        label: 'Aargau',
-        nodes: [
-          {
-            label: 'Hüttenwiler'
-          },
-          {
-            label: 'Grosswangen',
-            nodes: [
-              {
-                label: 'Study 1'
-              }
-            ]
-          }
-        ]
-      },
-      { label: 'Bern' },
-      { label: 'Zürich' }
-    ]
-}
-
-import ScanCard from '~/components/ScanCard.vue'
-
-export default {
-  components: {
-    ScanCard
-  },
-  data () {
-    return { tree }
-  },
-  metaInfo () {
-    return {
-      title: this.$page.scan.title,
-      meta: [
-        {
-          name: 'author',
-          content: this.$page.scan.author
-        },{
-          name: 'updated',
-          content: this.$page.scan.updated
-        }
-      ]
-    }
-  }
-}
-</script>
+<script src="./Scan.js" />
 
 <page-query>
 query Scan ($path: String!) {
@@ -148,5 +49,11 @@ query Scan ($path: String!) {
 }
 .scan-main, .scan-meta {
   padding: 0 1em;
+}
+.scan-meta tr:first-child > * {
+  border-top: none;
+}
+.scan-meta .card {
+  margin-bottom: 1em;
 }
 </style>

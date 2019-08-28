@@ -1,0 +1,50 @@
+layout
+  i-layout
+    i-layout-header.scan-header
+      h1.scan-title
+        | {{ $page.scan.title }}
+    i-layout(vertical)
+      i-layout-aside.scans
+        i-collapsible
+          i-collapsible-item(v-for='canton in tree.nodes', :key="canton.label", :title='canton.label')
+            i-collapsible(v-if='canton.label == "Aargau"')
+              ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node')
+      i-layout-content.scan-main
+        .scan-rendering
+          .scan-map(v-if='$page.scan.map_url')
+            iframe(:src='$page.scan.map_url', frameborder='0')
+          g-image(v-else-if='$page.scan.preview', :src='$page.scan.preview')
+          div(v-else='')
+            i Rendering not available.
+        .scan-content(v-html='$page.scan.content')
+      i-layout-aside.scan-meta
+        .scan-details
+          i-table
+            tr
+              th Author
+              td {{ $page.scan.author }}
+            tr
+              th Updated
+              td {{ $page.scan.updated }}
+        i-card.scan-object
+          template(slot="header") Details
+          i-table
+            tr
+              th Object
+              td {{ $page.scan.object.name }}
+            tr
+              th Type
+              td {{ $page.scan.object.type }}
+            tr
+              th Area
+              td {{ $page.scan.object.area }}
+            tr
+              th Perimeter
+              td {{ $page.scan.object.perimeter }}
+            tr
+              th Resolution
+              td {{ $page.scan.object.resolution }}
+        i-card.scan-categories
+          template(slot="header") Categories
+          ul
+            li(v-for='ctg in $page.scan.category') {{ ctg }}
