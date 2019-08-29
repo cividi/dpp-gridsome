@@ -14,22 +14,34 @@ module.exports = function (api) {
 
   // Use the Data Store API here: https://gridsome.org/docs/data-store-api
   api.loadSource(async store => {
-    const contentType = store.addContentType({
+    /*
+    const resourceType = store.addContentType({
       typeName: 'Resource',
       route: '/r/:parent/:name'
     })
-    const package = await Package.load('content/gemeindescan-huettwilen/datapackage.json')
+    const packageType = store.addContentType({
+      typeName: 'Package',
+      route: '/p/:name'
+    })
 
+    filespec = 'content/gemeindescan-huettwilen/datapackage.json'
+
+    console.log("Loading Data Packages", filespec)
+    const package = await Package.load(filespec)
+    packageType.addNode(package.descriptor)
+
+    console.log("Loading Resources", package.resources.length)
     for (const item of package.resources) {
       if (!item.valid) throw Exception(item.errors)
       if (!item.tabular) continue
       await item.read()
-      contentType.addNode({
+      resourceType.addNode({
         parent: package.descriptor.name,
         name: item.name,
         url: (item.path ? item.path : item.url)
       })
     }
+    */
   })
 
   // Use the Pages API here: https://gridsome.org/docs/pages-api

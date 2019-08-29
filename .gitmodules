@@ -1,0 +1,3 @@
+[submodule "static/lib/smartuse-gl"]
+	path = static/lib/smartuse-gl
+	url = git@github.com:smartuse/smartuse-gl.git

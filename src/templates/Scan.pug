@@ -6,16 +6,16 @@ layout
     i-layout(vertical)
       i-layout-aside.scans
         i-collapsible
-          i-collapsible-item(v-for='canton in tree.nodes', :key="canton.label", :title='canton.label')
-            i-collapsible(v-if='canton.label == "Aargau"')
-              ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node')
+          ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node', :current='$page.scan')
       i-layout-content.scan-main
         .scan-rendering
-          .scan-map(v-if='$page.scan.map_url')
-            iframe(:src='$page.scan.map_url', frameborder='0')
-          g-image(v-else-if='$page.scan.preview', :src='$page.scan.preview')
-          div(v-else='')
-            i Rendering not available.
+          MapView()
+          //
+            .scan-map(v-if='$page.scan.map_url')
+              iframe(:src='$page.scan.map_url', frameborder='0')
+            g-image(v-else-if='$page.scan.preview', :src='$page.scan.preview')
+            div(v-else='')
+              i Rendering not available.
         .scan-content(v-html='$page.scan.content')
       i-layout-aside.scan-meta
         .scan-details
