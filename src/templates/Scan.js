@@ -1,35 +1,10 @@
-let tree = {
-  label: 'CH',
-    nodes: [
-      {
-        label: 'Aargau',
-        nodes: [
-          {
-            label: 'Hüttenwiler'
-          },
-          {
-            label: 'Grosswangen',
-            nodes: [
-              {
-                label: 'Study 1'
-              }
-            ]
-          }
-        ]
-      },
-      { label: 'Bern' },
-      { label: 'Zürich' }
-    ]
-}
-
 import ScanCard from '~/components/ScanCard.vue'
+import MapView from '~/components/MapView.vue'
 
 export default {
   components: {
-    ScanCard
-  },
-  data () {
-    return { tree }
+    ScanCard,
+    MapView
   },
   metaInfo () {
     return {

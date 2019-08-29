@@ -2,11 +2,15 @@
 layout
   i-layout
     i-layout(vertical)
-      i-layout-aside.scans
-        i-collapsible(variant="dark")
-          ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node')
       i-layout-content
-        p  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet imperdiet odio. Cras ultricies turpis sed dui molestie maximus. Sed finibus et sapien at ultrices. Pellentesque feugiat tincidunt laoreet. Aliquam pellentesque eros turpis, eu euismod diam accumsan ac. Donec fringilla non enim vel iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur luctus at leo sit amet gravida. Etiam laoreet eu risus sit amet tristique. Vestibulum fermentum sed arcu sit amet rhoncus. Sed hendrerit interdum imperdiet. Mauris molestie vestibulum enim non tincidunt.
+        i-container(fluid)
+          i-row
+            i-column
+            i-column.scans
+              h1 Gemeindescan Alpha
+              ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node')
+              p  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sit amet imperdiet odio. Cras ultricies turpis sed dui molestie maximus. Sed finibus et sapien at ultrices. Pellentesque feugiat tincidunt laoreet. Aliquam pellentesque eros turpis, eu euismod diam accumsan ac. Donec fringilla non enim vel iaculis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur luctus at leo sit amet gravida. Etiam laoreet eu risus sit amet tristique. Vestibulum fermentum sed arcu sit amet rhoncus. Sed hendrerit interdum imperdiet. Mauris molestie vestibulum enim non tincidunt.
+            i-column
     i-layout-footer
       .home-links
         a(href='https://cividi.ch', target='_blank', rel='noopener') Cividi
@@ -22,7 +26,7 @@ layout
         id
         title
         path
-        preview (width: 120, blur: 0)
+        preview (width: 160, blur: 0)
         ...on Scan {
             id
             title
