@@ -5,8 +5,7 @@ layout
         | {{ $page.scan.title }}
     i-layout(vertical)
       i-layout-aside.scans
-        i-collapsible
-          ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node', :current='$page.scan')
+        ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node', :current='$page.scan')
       i-layout-content.scan-main
         .scan-rendering
           MapView()

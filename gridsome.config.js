@@ -27,8 +27,26 @@ module.exports = {
   chainWebpack: config => {
     config.module
       .rule('pug')
-      .test(/\.pug$/)
-      .use('pug-plain-loader')
-      .loader('pug-plain-loader')
+        .test(/\.pug$/)
+        .use('pug-plain-loader')
+          .loader('pug-plain-loader')
+        .end()
+      .end()
+      .rule('geojson')
+        .test(/\.geojson/)
+        .use('json-loader')
+          .loader('json-loader')
+        .end()
+      .end()
+      .rule('md')
+        .test(/\.md/)
+        .use('vue-loader')
+          .loader('vue-loader')
+        .end()
+        .use('vue-markdown-loader')
+          .loader('vue-markdown-loader/lib/markdown-compiler')
+          .options({
+            raw: true
+          })
   }
 }

@@ -44,6 +44,12 @@ query Scan ($path: String!) {
     width: 100%; height: 300px;
   }
 }
+.scans {
+  text-align: center;
+  a {
+    display: block;
+  }
+}
 .scan-title {
   text-align: center;
 }
