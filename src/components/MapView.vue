@@ -30,7 +30,7 @@ import {
   MglGeojsonLayer // https://soal.github.io/vue-mapbox/api/Layers/geojsonlayer.html#props
 } from "vue-mapbox";
 
-import PerimeterGeoJson from "../../content/gemeindescan-grosswangen/data/perimeter.geojson"
+import PerimeterGeoJson from "./perimeter.geojson"
 
 let ACCESS_TOKEN = "pk.eyJ1Ijoic21hcnR1c2UiLCJhIjoiY2pkNGowcGdzMHhpbzMzcWp3eGYydGhmMiJ9.k9QyYo-2pFvyyFDJiz16UA"
 let MAP_STYLE = "mapbox://styles/smartuse/cjtrhdbov226f1fny42msve3k"

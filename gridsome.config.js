@@ -38,6 +38,12 @@ module.exports = {
           .loader('json-loader')
         .end()
       .end()
+      .rule('mapbox-gl-build')
+        .test(/mapbox-gl/)
+        .use('null-loader')
+          .loader('null-loader')
+        .end()
+      /*
       .rule('md')
         .test(/\.md/)
         .use('vue-loader')
@@ -48,5 +54,6 @@ module.exports = {
           .options({
             raw: true
           })
+          */
   }
 }
