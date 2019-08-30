@@ -1,8 +1,9 @@
 // This is where project configuration and plugin options are located.
 // Learn more: https://gridsome.org/docs/config
 
+const path = require('path')
+
 // Changes here require a server restart.
-// To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
   siteName: 'Gemeindescan',
@@ -13,7 +14,7 @@ module.exports = {
       options: {
         typeName: 'Scan',
         path: 'content/**/project.md',
-        route: '/p/:slug',
+        route: '/p/:name',
       }
     },{
       use: '@gridsome/source-filesystem',
@@ -24,6 +25,17 @@ module.exports = {
       }
     }
   ],
+  configureWebpack: {
+    resolve: {
+      extensions: ['.js', '.vue', '.json'],
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js',
+        '@': path.resolve('src'),
+        'vue-mapbox': path.resolve(__dirname, 'node_modules/vue-mapbox/dist/vue-mapbox.umd.min.js'),
+        'mapbox-gl': path.resolve(__dirname, 'node_modules/mapbox-gl/dist/mapbox-gl-unminified.js'),
+      }
+    }
+  },
   chainWebpack: config => {
     config.module
       .rule('pug')
@@ -38,11 +50,12 @@ module.exports = {
           .loader('json-loader')
         .end()
       .end()
-      .rule('mapbox-gl-build')
-        .test(/mapbox-gl/)
-        .use('null-loader')
-          .loader('null-loader')
-        .end()
+      // .rule('mapbox-gl-build')
+      //   .test(/mapbox-gl/)
+      //   .use('null-loader')
+      //     .loader('null-loader')
+      //   .end()
+      // .end()
       /*
       .rule('md')
         .test(/\.md/)

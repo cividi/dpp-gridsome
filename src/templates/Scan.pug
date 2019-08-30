@@ -8,7 +8,7 @@ layout
         ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node', :current='$page.scan')
       i-layout-content.scan-main
         .scan-rendering
-          MapView()
+          MapboxView(:view='$page.scan.mapview')
           //
             .scan-map(v-if='$page.scan.map_url')
               iframe(:src='$page.scan.map_url', frameborder='0')

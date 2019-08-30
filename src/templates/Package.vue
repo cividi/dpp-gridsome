@@ -3,8 +3,8 @@ layout
   i-layout
     i-layout-header.scan-header
       h1.scan-title
-        | {{ $page.package.name }}
-      p {{ $page.package.url }}
+        | {{ $page.package.title }}
+      p {{ $page.package.format }}
 </template>
 
 <script>
@@ -25,6 +25,8 @@ export default {
 query Package ($path: String!) {
   package: package (path: $path) {
     name
+    title
+    format
   }
 }
 </page-query>

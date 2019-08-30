@@ -1,10 +1,10 @@
 import ScanCard from '~/components/ScanCard.vue'
-import MapView from '~/components/MapView.vue'
+import MapboxView from '~/components/MapboxView.vue'
 
 export default {
   components: {
     ScanCard,
-    MapView
+    MapboxView
   },
   metaInfo () {
     return {

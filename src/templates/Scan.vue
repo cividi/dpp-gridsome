@@ -5,9 +5,16 @@
 <page-query>
 query Scan ($path: String!) {
   scan: scan (path: $path) {
+    name
     title
     author
     updated
+    mapview {
+      data
+      zoom
+      lat
+      lon
+    }
     preview (width: 860, blur: 10)
     category
     object {
