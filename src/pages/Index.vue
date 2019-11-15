@@ -1,9 +1,14 @@
 <template lang="pug">
 layout
   center
-    h1 Gemeindescan Alpha
+    h2 Showcase
     .scans
       ScanCard(v-for='edge in $page.scans.edges', :key='edge.node.id', :scan='edge.node')
+      hr
+
+    h2 Toolbox
+    .toolbox
+      FlowCard(v-for='edge in $page.toolbox.edges', :key='edge.node.id', :flow='edge.node')
       hr
   i-container(fluid)
     i-row
@@ -16,7 +21,7 @@ layout
         h1 À propos
         p SmartUse GmbH gestaltet und betreibt diese Plattform: ein junges Unternehmen mit erheblichem Expertenwissen in den Bereichen Architektur, Raumplanung, Immobilienentwicklung und Data Engineering.
         p Für mehr Informationen besuchen Sie
-          a(href="https://gemeindescan.ch/") gemeindescan.ch
+          a(href="https://smartuse.ch/gemeindescan") smartuse.ch
       i-column
     i-layout-footer
       .home-links
@@ -42,15 +47,25 @@ layout
         }
       }
     }
+  },
+  toolbox: allFlow {
+    edges {
+      node {
+        id
+        title
+        updated
+      }
+    }
   }
 }
 </page-query>
 <script>
 import ScanCard from '~/components/ScanCard.vue'
+import FlowCard from '~/components/FlowCard.vue'
 
 export default {
   components: {
-    ScanCard
+    ScanCard, FlowCard
   },
   metaInfo: {
     name: 'home',

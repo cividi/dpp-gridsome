@@ -2,7 +2,7 @@
 #app
   i-navbar(variant='cividi')
     i-navbar-brand(to="/")
-      b {{ $static.metaData.siteName }}
+      b {{ $static.metadata.siteName }}
     i-navbar-items
       i-nav
         i-nav-item(to="/") Beta
@@ -13,7 +13,7 @@
 
 <static-query>
 query {
-  metaData {
+  metadata {
     siteName
   }
 }

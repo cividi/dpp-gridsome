@@ -13,7 +13,7 @@
     "@gridsome/transformer-remark": "^0.3.2",
     "@inkline/inkline": "^1.16.1",
     "datapackage": "^1.1.4",
-    "gridsome": "^0.6.0",
+    "gridsome": "^0.7.9",
     "mapbox-gl": "^0.53.0",
     "vue": "^2.6.4",
     "vue-mapbox": "^0.4.1",

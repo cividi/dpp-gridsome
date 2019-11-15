@@ -7,14 +7,22 @@ const path = require('path')
 
 module.exports = {
   siteName: 'Gemeindescan',
-  siteDescription: 'The SmartUse Gemeindescan Frontend.',
+  siteDescription: 'SmartUse Gemeindescan toolbox and projects',
   plugins: [
     {
       use: '@gridsome/source-filesystem',
       options: {
+        typeName: 'Flow',
+        path: 'toolbox/**/flow.md',
+        route: '/fl/:slug',
+      }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
         typeName: 'Scan',
-        path: 'content/**/project.md',
-        route: '/p/:name',
+        path: 'content/**/scan.md',
+        route: '/sc/:name',
       }
     },{
       use: '@gridsome/source-filesystem',

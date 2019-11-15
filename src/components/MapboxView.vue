@@ -14,6 +14,7 @@ export default {
     window.mapboxgl = require('mapbox-gl');
     window.mapboxgl.accessToken = ACCESS_TOKEN;
 
+    if (!this.view) return;
     let geoparam = this.view;
 
     let map = new window.mapboxgl.Map({

@@ -9,12 +9,6 @@ query Scan ($path: String!) {
     title
     author
     updated
-    mapview {
-      data
-      zoom
-      lat
-      lon
-    }
     preview (width: 860, blur: 10)
     category
     object {
@@ -45,7 +39,7 @@ query Scan ($path: String!) {
 </page-query>
 
 <style lang="scss" scoped>
-.scan-rendering {
+.scan-rendering, .scan-content {
   img { width: 100%; }
   iframe {
     width: 100%; height: 300px;
